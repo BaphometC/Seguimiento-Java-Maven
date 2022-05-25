@@ -1,12 +1,12 @@
 package com.seguimiento.model;
-
+import javax.persistence.*;
 @Entity
 @Table(name = "historiaPagoMes")
 public class historiaPagoMes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idHistoriaPagoMes;
+    private int id;
     private int idMes;
     private int idSuscripcion;
     private String estado;
@@ -16,11 +16,11 @@ public class historiaPagoMes {
     private int montoDeuda;
 
     public int getIdHistoriaPagoMes() {
-        return idHistoriaPagoMes;
+        return id;
     }
 
-    public void setIdHistoriaPagoMes(int idHistoriaPagoMes) {
-        this.idHistoriaPagoMes = idHistoriaPagoMes;
+    public void setIdHistoriaPagoMes(int id) {
+        this.id = id;
     }
 
     public int getIdMes() {

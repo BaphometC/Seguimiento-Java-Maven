@@ -1,21 +1,21 @@
 package com.seguimiento.model;
-
+import javax.persistence.*;
 @Entity
 @Table(name = "mes")
 public class mes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idMes;
+    private int id;
     private String nombre;
     private int año;
 
     public int getIdMes() {
-        return idMes;
+        return id;
     }
 
     public void setIdMes(int idMes) {
-        this.idMes = idMes;
+        this.id = idMes;
     }
     
     public String getNombre() {
