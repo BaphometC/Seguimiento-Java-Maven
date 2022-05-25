@@ -1,6 +1,11 @@
 package com.seguimiento.model;
-public class Person {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "user")
+public class Person {
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
   private String name;
   public String getName() {
@@ -25,13 +30,12 @@ private int age;
     this.id = id;
   }
 
-  public Person(){
-
+  public Person() {
+	  
   }
 
-  public Person(int id,String name, int age) {
+  public Person(String name, int age) {
     super();
-    this.id=id;
     this.name = name;
     this.age = age;
   }
