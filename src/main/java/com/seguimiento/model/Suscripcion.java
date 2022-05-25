@@ -19,9 +19,19 @@ public class Suscripcion {
         //
     }
 
-    public Suscripcion(String nombre) {
+    public Suscripcion(
+        String fechaInicio,
+        String duracion,
+        String ciclo,
+        String diasRecordatorio,
+        String tipoMoneda
+    ) {
         super();
-        this.nombre = nombre;
+        this.fechaInicio = fechaInicio;
+        this.duracion = duracion;
+        this.ciclo = ciclo;
+        this.diasRecordatorio = diasRecordatorio;
+        this.tipoMoneda = tipoMoneda;
     }
 
     public int getId() {
