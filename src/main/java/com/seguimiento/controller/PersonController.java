@@ -17,16 +17,16 @@ public class PersonController {
 	  public List<Person> getAllPersons(){
 	    //Returns hardcoded data, a real world application would return from the database
 	    List<Person> personList = new ArrayList<Person>();
-	    personList.add(new Person(1,"Mickey Mouse", 30));
-	    personList.add(new Person(2,"Donald Duck", 35));
-	    personList.add(new Person(3,"Peppa Pig", 15));
+	    personList.add(new Person("Mickey Mouse", 30));
+	    personList.add(new Person("Donald Duck", 35));
+	    personList.add(new Person("Peppa Pig", 15));
 	    return personList;
 	  } 
 
 	  @GetMapping("/person/{personId}")
 	  public Person getPersonWithId(@PathVariable Integer personId){
 	    //Returns hardcoded data, a real world application would return from the database
-	    return new Person(3,"Peppa Pig", 15);
+	    return new Person("Peppa Pig", 15);
 	  } 
 
 
