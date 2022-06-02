@@ -1,4 +1,4 @@
-package com.seguimiento.repository;
+package com.seguimiento.repository.usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.seguimiento.model.Usuario;
 
