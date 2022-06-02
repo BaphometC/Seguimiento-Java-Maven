@@ -8,7 +8,7 @@ public class Suscripcion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
     private String fechaInicio;
     private String duracion;
     private String ciclo;
@@ -34,10 +34,10 @@ public class Suscripcion {
         this.tipoMoneda = tipoMoneda;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -2,19 +2,19 @@ package com.seguimiento.model;
 import javax.persistence.*;
 @Entity
 @Table(name = "mes")
-public class mes {
+public class Mes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
     private String nombre;
     private int año;
 
-    public int getIdMes() {
+    public long getIdMes() {
         return id;
     }
 
-    public void setIdMes(int idMes) {
+    public void setIdMes(long idMes) {
         this.id = idMes;
     }
     

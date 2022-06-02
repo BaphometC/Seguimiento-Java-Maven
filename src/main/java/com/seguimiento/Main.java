@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.seguimiento.model.*;
 import com.seguimiento.repository.*;
 import com.seguimiento.repository.usuario.UsuarioRepository;
+import com.seguimiento.repository.proveedor.ProveedorRepository;
 
 @SpringBootApplication
 public class Main implements CommandLineRunner{

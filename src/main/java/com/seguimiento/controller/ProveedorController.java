@@ -2,6 +2,8 @@ package com.seguimiento.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,32 +14,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.seguimiento.model.Proveedor;
-import com.seguimiento.repository.ProveedorRepository;
+import com.seguimiento.model.Usuario;
+import com.seguimiento.repository.proveedor.ProveedorRepository;
+import com.seguimiento.repository.usuario.UsuarioRepository;
 
 @RestController
 public class ProveedorController {
 	
 	@Autowired
-	ProveedorRepository proveedorRepo;
-	@GetMapping("/proveedor")
-	  public List<Proveedor> getAllProveedores(){
-	    
-	    List<Proveedor> proveedorList = proveedorRepo.findAll();
-	    return proveedorList;
-	  } 
+	private ProveedorRepository proveedorRepo;
+	
+	@GetMapping("/proveedores")
+	public List<Proveedor> findAll() {
+		List<Proveedor> proveedorlist = proveedorRepo.findAll();
+		return proveedorlist;
+	}
 
-	  @GetMapping("/proveedor/{proveedorId}")
-	  public Proveedor getProveedorWithId(@PathVariable Integer proveedorId){
-	    
-	    return new Proveedor("Mickey Mouse", "Mickey Mouse", "Mickey Mouse", 45.2, "Mickey Mouse","Mickey Mouse");
-	  } 
+	@GetMapping("/proveedores/{proveedorId}")
+	public Optional < Proveedor > findById(@PathVariable Long proveedorId) {
+		return proveedorRepo.findById(proveedorId);
+	}
 
-
-	  @PostMapping("/proveedor/newproveedor")
-	  public void addProveedor(@RequestBody Proveedor proveedor){
-	    
-	    System.out.println("Saving proveedor information");
-
-	  }
+	@PostMapping("/proveedores/newproveedor")
+	public void save(Proveedor proveedor) {
+		proveedorRepo.save(proveedor);
+	}
+	
+	@PostMapping("/proveedores/delete/{proveedorId}")
+	public void delete(@PathVariable Long proveedorId){
+		proveedorRepo.deleteById(proveedorId);
+	}
 
 }
