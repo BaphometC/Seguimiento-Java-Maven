@@ -16,10 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.seguimiento.model.Proveedor;
 import com.seguimiento.model.Usuario;
 import com.seguimiento.repository.proveedor.ProveedorRepository;
+import com.seguimiento.repository.proveedor.ProveedorService;
 import com.seguimiento.repository.usuario.UsuarioRepository;
 
 @RestController
-public class ProveedorController {
+public class ProveedorController implements ProveedorService{
 	
 	@Autowired
 	private ProveedorRepository proveedorRepo;

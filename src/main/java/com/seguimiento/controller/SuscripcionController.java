@@ -7,13 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.seguimiento.model.Suscripcion;
 import com.seguimiento.model.Usuario;
 import com.seguimiento.repository.suscripcion.SuscripcionRepository;
+import com.seguimiento.repository.suscripcion.SuscripcionService;
 import com.seguimiento.repository.usuario.UsuarioRepository;
 
-public class SuscripcionController {
+@RestController
+public class SuscripcionController implements SuscripcionService{
 
 	@Autowired
 	private SuscripcionRepository suscripcionRepo;
