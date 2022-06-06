@@ -5,4 +5,6 @@ import com.seguimiento.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	
+	Usuario findByDni(int dni);
+	
 }

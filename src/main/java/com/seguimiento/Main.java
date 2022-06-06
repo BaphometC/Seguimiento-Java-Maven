@@ -6,14 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.seguimiento.model.*;
 import com.seguimiento.repository.*;
 import com.seguimiento.repository.categoria.CategoriaRepository;
 import com.seguimiento.repository.usuario.UsuarioRepository;
 import com.seguimiento.repository.proveedor.ProveedorRepository;
+import com.seguimiento.repository.suscripcion.SuscripcionRepository;
 
 @SpringBootApplication
 public class Main implements CommandLineRunner {
@@ -24,6 +28,8 @@ public class Main implements CommandLineRunner {
 	public ProveedorRepository proveedorRepo;
 	@Autowired
 	public CategoriaRepository categoriaRepo;
+	@Autowired
+	public SuscripcionRepository suscripcionRepo;
 
 	public static void main(String args[]) {
 		SpringApplication.run(Main.class, args);
@@ -33,10 +39,21 @@ public class Main implements CommandLineRunner {
 		UsuarioSeeder();
 		ProveedorSeeder();
 		CategoriaSeeder();
+		SuscripcionSeeder();
 	}
 	
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+	        return new WebMvcConfigurer() {
+	            
+	            public void addCorsMappings(CorsRegistry registry) {
+	                registry.addMapping("/**").allowedOrigins("*").allowedMethods("*").allowedHeaders("*");
+	            }
+	        };
+	    }
+	
 	public void UsuarioSeeder() {
-		Usuario user1 = new Usuario(11111111, null, "Mickey Mouse", null, 111111111, null, 1111, null);
+		Usuario user1 = new Usuario(11111111, "123", "Mickey Mouse", "123", 111111111, "123", 123, "123");
 		Usuario user2 = new Usuario(22222222, null, "Mickey Mouse", null, 222222222, null, 2222, null);
 		usuarioRepo.save(user1);
 		usuarioRepo.save(user2);
@@ -63,6 +80,11 @@ public class Main implements CommandLineRunner {
 		this.categoriaRepo.save(categoria2);
 		this.categoriaRepo.save(categoria3);
 		this.categoriaRepo.save(categoria4);
+	}
+	
+	public void SuscripcionSeeder() {
+		Suscripcion suscripcion1 = new Suscripcion("2022-09-10", "6 meses","Mensual", "2 dias", "Sol Peruano");
+		this.suscripcionRepo.save(suscripcion1);
 	}
 
 }
