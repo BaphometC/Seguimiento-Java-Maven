@@ -83,8 +83,10 @@ public class Main implements CommandLineRunner {
 	}
 	
 	public void SuscripcionSeeder() {
-		Suscripcion suscripcion1 = new Suscripcion("2022-09-10", "6 meses","Mensual", "2 dias", "Sol Peruano");
+		Suscripcion suscripcion1 = new Suscripcion("2022-09-10", "6 meses","Mensual", "2 dias", "Sol Peruano",1,5,1);
+		Suscripcion suscripcion2 = new Suscripcion("2022-09-10", "6 meses","Mensual", "2 dias", "Sol Peruano",1,5,1);
 		this.suscripcionRepo.save(suscripcion1);
+		this.suscripcionRepo.save(suscripcion2);
 	}
 
 }

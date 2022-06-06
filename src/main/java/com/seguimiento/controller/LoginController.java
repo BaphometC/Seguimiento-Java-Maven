@@ -35,7 +35,7 @@ public class LoginController {
 
 	
 	@PostMapping("/login")
-	public ResponseEntity<Usuario> login(@RequestParam int dni, @RequestParam String password){
+	public ResponseEntity<Usuario> login(@RequestParam long dni, @RequestParam String password){
 		Usuario user = usuarioRepo.findByDni(dni);
 		if(user.getPassword().equals(password)) {
 			return new ResponseEntity<Usuario>(user, HttpStatus.OK);

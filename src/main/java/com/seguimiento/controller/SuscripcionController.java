@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.seguimiento.model.Suscripcion;
@@ -27,14 +30,21 @@ public class SuscripcionController implements SuscripcionService{
 		return suscripcionlist;
 	}
 
-	@GetMapping("/suscripciones/{suscripcionId}")
-	public Optional < Suscripcion > findById(@PathVariable Long suscripcionId) {
-		return suscripcionRepo.findById(suscripcionId);
+	//@GetMapping("/suscripciones/{suscripcionId}")
+	//public Optional < Suscripcion > findById(@PathVariable long suscripcionId) {
+	//	return suscripcionRepo.findById(suscripcionId);
+	//}
+	
+	@GetMapping("/suscripciones/{idUsuario}")
+	public ResponseEntity<List < Suscripcion >> findByUsuarioId(@PathVariable long idUsuario) {
+		List<Suscripcion> lista = suscripcionRepo.findByIdUsuario(idUsuario);
+		return new ResponseEntity<List<Suscripcion>>(lista, HttpStatus.OK);
 	}
 
 	@PostMapping("/suscripciones/newsuscripcion")
-	public void save(Suscripcion suscripcion) {
-		suscripcionRepo.save(suscripcion);
+	public ResponseEntity<Suscripcion> save(Suscripcion suscripcion) {
+		Suscripcion suscripcion1 = suscripcionRepo.save(suscripcion);
+		return new ResponseEntity<Suscripcion>(suscripcion1, HttpStatus.OK);
 	}
 	
 	@PostMapping("/suscripciones/delete/{suscripcionId}")

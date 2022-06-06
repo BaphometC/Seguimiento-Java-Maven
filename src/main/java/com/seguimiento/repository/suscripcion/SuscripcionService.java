@@ -1,16 +1,22 @@
 package com.seguimiento.repository.suscripcion;
 
 import java.util.Optional;
+
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 import com.seguimiento.model.Suscripcion;
+import com.seguimiento.model.Usuario;
 
 public interface SuscripcionService {
     List < Suscripcion > findAll();
 
-    void save(Suscripcion suscripcion);
+    ResponseEntity<Suscripcion> save(Suscripcion suscripcion);
 
-    Optional < Suscripcion > findById(Long suscripcionId);
+   // Optional < Suscripcion > findById(long suscripcionId);
+    
+    ResponseEntity<List < Suscripcion >> findByUsuarioId(long idUsuario);
 
     void delete(Long suscripcionId);
 }
