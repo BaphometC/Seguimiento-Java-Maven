@@ -54,7 +54,7 @@ public class Main implements CommandLineRunner {
 	
 	public void UsuarioSeeder() {
 		Usuario user1 = new Usuario(11111111, "123", "Mickey Mouse", "123", 111111111, "123", 123, "123");
-		Usuario user2 = new Usuario(22222222, null, "Mickey Mouse", null, 222222222, null, 2222, null);
+		Usuario user2 = new Usuario(22222222, "345", "Mickey Mouse", null, 222222222, null, 2222, null);
 		usuarioRepo.save(user1);
 		usuarioRepo.save(user2);
 	}
@@ -83,10 +83,10 @@ public class Main implements CommandLineRunner {
 	}
 	
 	public void SuscripcionSeeder() {
-		Suscripcion suscripcion1 = new Suscripcion("2022-09-10", "6 meses","Mensual", "2 dias", "Sol Peruano",1,5,1);
-		Suscripcion suscripcion2 = new Suscripcion("2022-09-10", "6 meses","Mensual", "2 dias", "Sol Peruano",1,5,1);
-		this.suscripcionRepo.save(suscripcion1);
-		this.suscripcionRepo.save(suscripcion2);
+		//Suscripcion suscripcion1 = new Suscripcion("2022-09-10", "6 meses","Mensual", "2 dias", "Sol Peruano",1,5,1);
+		//Sucripcion suscripcion2 = new Suscripcion("2022-09-10", "6 meses","Mensual", "2 dias", "Sol Peruano",1,5,1);
+		//this.suscripcionRepo.save(suscripcion1);
+		//this.suscripcionRepo.save(suscripcion2);
 	}
 
 }

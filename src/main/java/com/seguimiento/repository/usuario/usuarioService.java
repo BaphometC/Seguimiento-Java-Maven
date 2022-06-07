@@ -4,12 +4,13 @@ import java.util.Optional;
 
 import com.seguimiento.model.Usuario;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public interface usuarioService {
 	List < Usuario > findAll();
 
-    void save(Usuario usuario);	
+    void save(Usuario usuario) throws NoSuchAlgorithmException;	
 
     Optional < Usuario > findById(Long usuarioId);
 

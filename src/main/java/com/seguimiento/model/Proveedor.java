@@ -1,5 +1,7 @@
 package com.seguimiento.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -72,6 +74,8 @@ public class Proveedor {
 	private Double costo;
 	private String website;
 	private String correo;
+	@OneToMany(mappedBy = "proveedor")
+	private List<Suscripcion> suscripciones;
 
 	public Proveedor() {
 

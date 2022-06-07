@@ -14,32 +14,43 @@ public class Suscripcion {
 	private String ciclo;
 	private String diasRecordatorio;
 	private String tipoMoneda;
-	private long idProveedor;
-	private long idUsuario;
-	private long idMes;
+	@ManyToOne
+	@JoinColumn(name = "idProveedor")
+	private Proveedor proveedor;
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
+	
+	@ManyToOne
+	@JoinColumn(name = "idMes")
+	private Mes mes;
 
-	public long getIdMes() {
-		return idMes;
+	
+
+
+	public Proveedor getProveedor() {
+		return proveedor;
 	}
 
-	public void setIdMes(long idMes) {
-		this.idMes = idMes;
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
 	}
 
-	public long getIdProveedor() {
-		return idProveedor;
+
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setIdProveedor(long idProveedor) {
-		this.idProveedor = idProveedor;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public long getIdUsuario() {
-		return idUsuario;
+	public Mes getMes() {
+		return mes;
 	}
 
-	public void setIdUsuario(long idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setMes(Mes mes) {
+		this.mes = mes;
 	}
 
 	public Suscripcion() {
@@ -47,16 +58,16 @@ public class Suscripcion {
 	}
 
 	public Suscripcion(String fechaInicio, String duracion, String ciclo, String diasRecordatorio, String tipoMoneda,
-			long idUsuario, long idProveedor, long idMes) {
+			Usuario usuario, Proveedor proveedor, Mes mes) {
 		super();
 		this.fechaInicio = fechaInicio;
 		this.duracion = duracion;
 		this.ciclo = ciclo;
 		this.diasRecordatorio = diasRecordatorio;
 		this.tipoMoneda = tipoMoneda;
-		this.idProveedor = idProveedor;
-		this.idUsuario = idUsuario;
-		this.idMes = idMes;
+		this.proveedor = proveedor;
+		this.usuario = usuario;
+		this.mes = mes;
 	}
 
 	public long getId() {

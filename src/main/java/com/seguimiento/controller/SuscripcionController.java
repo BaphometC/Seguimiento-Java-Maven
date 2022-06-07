@@ -23,6 +23,8 @@ public class SuscripcionController implements SuscripcionService{
 
 	@Autowired
 	private SuscripcionRepository suscripcionRepo;
+	@Autowired
+	private UsuarioRepository usuarioRepo;
 	
 	@GetMapping("/suscripciones")
 	public List<Suscripcion> findAll() {
@@ -36,8 +38,8 @@ public class SuscripcionController implements SuscripcionService{
 	//}
 	
 	@GetMapping("/suscripciones/{idUsuario}")
-	public ResponseEntity<List < Suscripcion >> findByUsuarioId(@PathVariable long idUsuario) {
-		List<Suscripcion> lista = suscripcionRepo.findByIdUsuario(idUsuario);
+	public ResponseEntity<List < Suscripcion >> findByUsuario(@PathVariable long idUsuario) {
+		List<Suscripcion> lista = suscripcionRepo.findByUsuario(usuarioRepo.findById(idUsuario).get());
 		return new ResponseEntity<List<Suscripcion>>(lista, HttpStatus.OK);
 	}
 

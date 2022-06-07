@@ -16,7 +16,7 @@ public interface SuscripcionService {
 
    // Optional < Suscripcion > findById(long suscripcionId);
     
-    ResponseEntity<List < Suscripcion >> findByUsuarioId(long idUsuario);
+    ResponseEntity<List < Suscripcion >> findByUsuario(long idUsuario);
 
     void delete(Long suscripcionId);
 }

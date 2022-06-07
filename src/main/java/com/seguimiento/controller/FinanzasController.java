@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.seguimiento.model.Proveedor;
 import com.seguimiento.model.Suscripcion;
 import com.seguimiento.model.Usuario;
+import com.seguimiento.repository.mes.MesRepository;
 import com.seguimiento.repository.proveedor.ProveedorRepository;
 import com.seguimiento.repository.suscripcion.SuscripcionRepository;
 
@@ -27,13 +28,15 @@ public class FinanzasController {
 	private ProveedorRepository proveedorRepo;
 	@Autowired
 	private SuscripcionRepository suscripcionRepo;
+	@Autowired
+	private MesRepository mesRepo;
 	
 	@GetMapping("/finanzas/{idMes}/{idUsuario}")
 	public ResponseEntity<List<Proveedor>> getFinanzas(@PathVariable long idMes, @PathVariable long idUsuario){
-		 List<Suscripcion> listames = suscripcionRepo.findByIdMes(idMes);
-		 List<Suscripcion> newlista = listames.stream().filter(l -> l.getIdUsuario()==idUsuario).toList();
+		 List<Suscripcion> listames = suscripcionRepo.findByMes(mesRepo.findById(idMes).get());
+		 List<Suscripcion> newlista = listames.stream().filter(l -> l.getUsuario().getId()==idUsuario).toList();
 		 List<Proveedor> listaproveedor = new ArrayList<Proveedor>();
-		 newlista.forEach(sus -> listaproveedor.add(proveedorRepo.findById(sus.getIdProveedor()).get()));
+		 newlista.forEach(sus -> listaproveedor.add(proveedorRepo.findById(sus.getProveedor().getId()).get()));
 		 return new ResponseEntity<List<Proveedor>>(listaproveedor, HttpStatus.OK);
 	}
 }

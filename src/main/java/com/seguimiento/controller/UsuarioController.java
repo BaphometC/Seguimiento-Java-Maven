@@ -1,5 +1,6 @@
 package com.seguimiento.controller;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.seguimiento.model.Usuario;
 import com.seguimiento.repository.usuario.UsuarioRepository;
 import com.seguimiento.repository.usuario.usuarioService;
+
+import utils.SHA512;
 
 @RestController
 public class UsuarioController implements usuarioService {
@@ -34,8 +37,11 @@ public class UsuarioController implements usuarioService {
 	}
 
 	@PostMapping("/usuarios/newusuario")
-	public void save(Usuario usuario) {
-		usuarioRepo.save(usuario);
+	public void save(Usuario usuario) throws NoSuchAlgorithmException {
+		Usuario newusuario = usuario;
+		String pass = SHA512.sha256(usuario.getPassword());
+		newusuario.setPassword(pass);
+		usuarioRepo.save(newusuario);
 	}
 	
 	@PostMapping("/usuarios/delete/{usuarioId}")

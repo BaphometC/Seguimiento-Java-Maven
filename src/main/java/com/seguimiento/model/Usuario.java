@@ -1,5 +1,7 @@
 package com.seguimiento.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,11 +19,11 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public int getDni() {
+	public long getDni() {
 		return dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(long dni) {
 		this.dni = dni;
 	}
 
@@ -33,12 +35,12 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public String getApellido() {
-		return apellido;
+	public String getNombre_completo() {
+		return nombre_completo;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setNombre_completo(String nombre_completo) {
+		this.nombre_completo = nombre_completo;
 	}
 
 	public String getCorreo() {
@@ -81,25 +83,27 @@ public class Usuario {
 		this.metodo_pago = metodo_pago;
 	}
 
-	private int dni;
+	private long dni;
 	private String password;
-	private String apellido;
+	private String nombre_completo;
 	private String correo;
 	private int telefono;
 	private String direccion;
 	private int codigo_postal;
 	private String metodo_pago;
+	@OneToMany(mappedBy = "usuario")
+	private List<Suscripcion> suscripciones;
 
 	public Usuario() {
 
 	}
 
-	public Usuario(int dni, String password, String apellido, String correo, int telefono, String direccion,
+	public Usuario(long dni, String password, String nombre_completo, String correo, int telefono, String direccion,
 			int codigo_postal, String metodo_pago) {
 		super();
 		this.dni = dni;
 		this.password = password;
-		this.apellido = apellido;
+		this.nombre_completo = nombre_completo;
 		this.correo = correo;
 		this.telefono = telefono;
 		this.direccion = direccion;

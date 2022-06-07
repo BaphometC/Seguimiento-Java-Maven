@@ -1,4 +1,6 @@
 package com.seguimiento.model;
+import java.util.List;
+
 import javax.persistence.*;
 @Entity
 @Table(name = "mes")
@@ -9,6 +11,8 @@ public class Mes {
     private long id;
     private String nombre;
     private int año;
+    @OneToMany(mappedBy = "mes")
+	private List<Suscripcion> suscripciones;
 
     public long getIdMes() {
         return id;
