@@ -15,7 +15,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.seguimiento.model.*;
 import com.seguimiento.repository.*;
 import com.seguimiento.repository.categoria.CategoriaRepository;
+import com.seguimiento.repository.mes.MesRepository;
 import com.seguimiento.repository.usuario.UsuarioRepository;
+
+import utils.SHA512;
+
 import com.seguimiento.repository.proveedor.ProveedorRepository;
 import com.seguimiento.repository.suscripcion.SuscripcionRepository;
 
@@ -29,7 +33,7 @@ public class Main implements CommandLineRunner {
 	@Autowired
 	public CategoriaRepository categoriaRepo;
 	@Autowired
-	public SuscripcionRepository suscripcionRepo;
+	public MesRepository mesRepo;
 
 	public static void main(String args[]) {
 		SpringApplication.run(Main.class, args);
@@ -39,7 +43,7 @@ public class Main implements CommandLineRunner {
 		UsuarioSeeder();
 		ProveedorSeeder();
 		CategoriaSeeder();
-		SuscripcionSeeder();
+		MesSeeder();
 	}
 	
 	@Bean
@@ -55,8 +59,10 @@ public class Main implements CommandLineRunner {
 	public void UsuarioSeeder() {
 		Usuario user1 = new Usuario(11111111, "123", "Mickey Mouse", "123", 111111111, "123", 123, "123");
 		Usuario user2 = new Usuario(22222222, "345", "Mickey Mouse", null, 222222222, null, 2222, null);
+		Usuario user3 = new Usuario(1234, SHA512.sha256("123"), "Hans Olivas", "correo@correo.com", 951789456, "Av.los olivos123", 1587, "Tarjeta Oh!");
 		usuarioRepo.save(user1);
 		usuarioRepo.save(user2);
+		usuarioRepo.save(user3);
 	}
 
 	public void ProveedorSeeder() {
@@ -82,11 +88,31 @@ public class Main implements CommandLineRunner {
 		this.categoriaRepo.save(categoria4);
 	}
 	
-	public void SuscripcionSeeder() {
-		//Suscripcion suscripcion1 = new Suscripcion("2022-09-10", "6 meses","Mensual", "2 dias", "Sol Peruano",1,5,1);
-		//Sucripcion suscripcion2 = new Suscripcion("2022-09-10", "6 meses","Mensual", "2 dias", "Sol Peruano",1,5,1);
-		//this.suscripcionRepo.save(suscripcion1);
-		//this.suscripcionRepo.save(suscripcion2);
+	public void MesSeeder() {
+		Mes mes1 = new Mes(1,"Enero");
+		Mes mes2 = new Mes(2,"Febrero");
+		Mes mes3 = new Mes(3,"Marzo");
+		Mes mes4 = new Mes(4,"Abril");
+		Mes mes5 = new Mes(5,"Mayo");
+		Mes mes6 = new Mes(6,"Junio");
+		Mes mes7 = new Mes(7,"Julio");
+		Mes mes8 = new Mes(8,"Agosto");
+		Mes mes9 = new Mes(9,"Septiembre");
+		Mes mes10 = new Mes(10,"Octubre");
+		Mes mes11 = new Mes(11,"Noviembre");
+		Mes mes12 = new Mes(12,"Diciembre");
+		this.mesRepo.save(mes1);
+		this.mesRepo.save(mes2);
+		this.mesRepo.save(mes3);
+		this.mesRepo.save(mes4);
+		this.mesRepo.save(mes5);
+		this.mesRepo.save(mes6);
+		this.mesRepo.save(mes7);
+		this.mesRepo.save(mes8);
+		this.mesRepo.save(mes9);
+		this.mesRepo.save(mes10);
+		this.mesRepo.save(mes11);
+		this.mesRepo.save(mes12);
 	}
 
 }

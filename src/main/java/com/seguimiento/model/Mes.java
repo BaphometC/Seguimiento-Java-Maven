@@ -7,10 +7,8 @@ import javax.persistence.*;
 public class Mes {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String nombre;
-    private int año;
     @OneToMany(mappedBy = "mes")
 	private List<Suscripcion> suscripciones;
 
@@ -18,7 +16,17 @@ public class Mes {
         return id;
     }
 
-    public void setIdMes(long idMes) {
+    public Mes(long id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+	}
+    
+    public Mes() {
+    	
+    }
+
+	public void setIdMes(long idMes) {
         this.id = idMes;
     }
     
@@ -30,11 +38,5 @@ public class Mes {
         this.nombre = nombre;
     }
     
-    public int getAño() {
-        return año;
-    }
-
-    public void setAño(int año) {
-        this.año = año;
-    }
+   
 }

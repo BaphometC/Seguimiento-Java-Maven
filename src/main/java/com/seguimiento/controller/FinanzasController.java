@@ -20,23 +20,18 @@ import com.seguimiento.repository.mes.MesRepository;
 import com.seguimiento.repository.proveedor.ProveedorRepository;
 import com.seguimiento.repository.suscripcion.SuscripcionRepository;
 
-
 @RestController
 public class FinanzasController {
 
 	@Autowired
-	private ProveedorRepository proveedorRepo;
-	@Autowired
 	private SuscripcionRepository suscripcionRepo;
 	@Autowired
 	private MesRepository mesRepo;
-	
+
 	@GetMapping("/finanzas/{idMes}/{idUsuario}")
-	public ResponseEntity<List<Proveedor>> getFinanzas(@PathVariable long idMes, @PathVariable long idUsuario){
-		 List<Suscripcion> listames = suscripcionRepo.findByMes(mesRepo.findById(idMes).get());
-		 List<Suscripcion> newlista = listames.stream().filter(l -> l.getUsuario().getId()==idUsuario).toList();
-		 List<Proveedor> listaproveedor = new ArrayList<Proveedor>();
-		 newlista.forEach(sus -> listaproveedor.add(proveedorRepo.findById(sus.getProveedor().getId()).get()));
-		 return new ResponseEntity<List<Proveedor>>(listaproveedor, HttpStatus.OK);
+	public ResponseEntity<List<Suscripcion>> getFinanzas(@PathVariable long idMes, @PathVariable long idUsuario) {
+		List<Suscripcion> listames = suscripcionRepo.findByMes(mesRepo.findById(idMes).get());
+		List<Suscripcion> newlista = listames.stream().filter(l -> l.getUsuario().getId() == idUsuario).toList();
+		return new ResponseEntity<List<Suscripcion>>(newlista, HttpStatus.OK);
 	}
 }
