@@ -57,31 +57,50 @@ public class Main implements CommandLineRunner {
 	    }
 	
 	public void UsuarioSeeder() {
-		Usuario user1 = new Usuario(11111111, "123", "Mickey Mouse", "123", 111111111, "123", 123, "123");
-		Usuario user2 = new Usuario(22222222, "345", "Mickey Mouse", null, 222222222, null, 2222, null);
-		Usuario user3 = new Usuario(1234, SHA512.sha256("123"), "Hans Olivas", "correo@correo.com", 951789456, "Av.los olivos123", 1587, "Tarjeta Oh!");
+		Usuario user1 = new Usuario(99662345, SHA512.sha256("99662345p"), "Pedro Zapata S.", "pedritoperu@hotmail.com", 954786254, "Jr. Comillas Mz. T Lte. 7, Los Olivos", 1563, "Credito","usuario");
+		Usuario user2 = new Usuario(45773587, SHA512.sha256("45773587f"), "Fernanda Jimenez", "jimefer89@gmail.com", 995778234, "Ca. Hilos Mz. U Lte. 2, Comas", 1436, "Credito","usuario");
+		Usuario user3 = new Usuario(65663125, SHA512.sha256("65663125h"), "Hans Olivas", "hansolivas1@gmail.com", 942359617, "Av. Alonso Ugarte #543, Surco", 1587, "Efectivo","usuario");
+		Usuario user4 = new Usuario(123, SHA512.sha256("admin"), "Admin", "admin@admin.com", 999999999, "PaginaSeguimiento", 9999, "Debito","admin");
+		Usuario user5 = new Usuario(12, SHA512.sha256("123"), "TestUser", "testuser@admin.com", 999999999, "PaginaSeguimiento", 9999, "Debito","usuario");
 		usuarioRepo.save(user1);
 		usuarioRepo.save(user2);
 		usuarioRepo.save(user3);
+		usuarioRepo.save(user4);
+		usuarioRepo.save(user5);
 	}
 
 	public void ProveedorSeeder() {
-		Proveedor proveedor1 = new Proveedor("Mickey Mouse1", "Mickey Mouse1", "Mickey Mouse1", 45.22, "Mickey Mouse1",
-				"Mickey Mouse1");
-		Proveedor proveedor2 = new Proveedor("Mickey Mouse2", "Mickey Mouse2", "Mickey Mouse2", 45.23, "Mickey Mouse2",
-				"Mickey Mouse2");
-		Proveedor proveedor3 = new Proveedor("Mickey Mouse3", "Mickey Mouse3", "Mickey Mouse3", 45.24, "Mickey Mouse4",
-				"Mickey Mouse3");
+		Proveedor proveedor1 = new Proveedor("Youtube", "Youtube Premium", "Entretenimiento", 30.00, "www.youtube.com",
+				"youtube.google@gmail.com");
+		Proveedor proveedor2 = new Proveedor("Spotify", "Spotify Premium", "Musica", 9.20, "www.open.spotify.com",
+				"spotifypremium@spotify.com");
+		Proveedor proveedor3 = new Proveedor("Netflix", "Netflix", "Peliculas y Series", 45.60, "www.netflix.com",
+				"netflix@netflix.com.latam");
+		Proveedor proveedor4 = new Proveedor("El Comercio", "El Comercio", "Noticias", 10.50, "www.elcomercio.pe",
+				"elcomercioperu@elcomercio.pe");
+		Proveedor proveedor5 = new Proveedor("Amazon Prime", "Prime Video", "Peliculas y Series", 17.00, "www.primevideo.com",
+				"primevideocl@amazon.com");
+		Proveedor proveedor6 = new Proveedor("HBO", "HBO Max", "Peliculas y Series", 14.90, "www.hbomax.com",
+				"hbomax@warnermediagp.com");
+		Proveedor proveedor7 = new Proveedor("Disney", "Disney+", "Peliculas y Series", 26.00, "www.disneyplus.com",
+				"disneypluscls@disney.com");
+		Proveedor proveedor8 = new Proveedor("Paramount", "Paramount+", "Peliculas y Series", 15.00, "www.paramountplus.com",
+				"paramountplusu@paramount.com");
 		proveedorRepo.save(proveedor1);
 		proveedorRepo.save(proveedor2);
 		proveedorRepo.save(proveedor3);
+		proveedorRepo.save(proveedor4);
+		proveedorRepo.save(proveedor5);
+		proveedorRepo.save(proveedor6);
+		proveedorRepo.save(proveedor7);
+		proveedorRepo.save(proveedor8);
 	}
 
 	public void CategoriaSeeder() {
-		Categoria categoria1 = new Categoria("Peliculas");
+		Categoria categoria1 = new Categoria("Peliculas y Series");
 		Categoria categoria2 = new Categoria("Musica");
-		Categoria categoria3 = new Categoria("Series");
-		Categoria categoria4 = new Categoria("Noticias");
+		Categoria categoria3 = new Categoria("Noticias");
+		Categoria categoria4 = new Categoria("Entretenimiento");
 		this.categoriaRepo.save(categoria1);
 		this.categoriaRepo.save(categoria2);
 		this.categoriaRepo.save(categoria3);

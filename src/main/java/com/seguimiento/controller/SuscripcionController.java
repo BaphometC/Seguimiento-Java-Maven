@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.seguimiento.model.Suscripcion;
 import com.seguimiento.model.Usuario;
+import com.seguimiento.repository.proveedor.ProveedorRepository;
 import com.seguimiento.repository.suscripcion.SuscripcionRepository;
 import com.seguimiento.repository.suscripcion.SuscripcionService;
 import com.seguimiento.repository.usuario.UsuarioRepository;
@@ -25,6 +26,7 @@ public class SuscripcionController implements SuscripcionService{
 	private SuscripcionRepository suscripcionRepo;
 	@Autowired
 	private UsuarioRepository usuarioRepo;
+
 	
 	@GetMapping("/suscripciones")
 	public List<Suscripcion> findAll() {
@@ -53,4 +55,14 @@ public class SuscripcionController implements SuscripcionService{
 	public void delete(@PathVariable Long suscripcionId){
 		suscripcionRepo.deleteById(suscripcionId);
 	}
+	
+	//Notificacion Prueba #1
+	//
+	//@GetMapping("/suscripciones/notificaciones/{idUsuario}")
+	//public ResponseEntity<List < Suscripcion >> findByUsuarioN(@PathVariable long idUsuario) {
+	//	List<Suscripcion> listasuscripciones = suscripcionRepo.findByUsuario(usuarioRepo.findById(idUsuario).get());
+	//	int cero = listasuscripciones.get(0);
+	//	return new ResponseEntity<List<Suscripcion>>(listasuscripciones, HttpStatus.OK);
+	//}
+
 }

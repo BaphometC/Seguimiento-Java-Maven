@@ -91,6 +91,15 @@ public class Usuario {
 	private String direccion;
 	private int codigo_postal;
 	private String metodo_pago;
+	private String rol;
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
 	@OneToMany(mappedBy = "usuario")
 	private List<Suscripcion> suscripciones;
 
@@ -99,7 +108,7 @@ public class Usuario {
 	}
 
 	public Usuario(long dni, String password, String nombre_completo, String correo, int telefono, String direccion,
-			int codigo_postal, String metodo_pago) {
+			int codigo_postal, String metodo_pago, String rol) {
 		super();
 		this.dni = dni;
 		this.password = password;
@@ -109,6 +118,7 @@ public class Usuario {
 		this.direccion = direccion;
 		this.codigo_postal = codigo_postal;
 		this.metodo_pago = metodo_pago;
+		this.rol = rol;
 	}
 
 

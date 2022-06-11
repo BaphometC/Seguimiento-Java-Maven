@@ -1,6 +1,9 @@
 package com.seguimiento.repository.proveedor;
 
 import java.util.Optional;
+
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 import com.seguimiento.model.Proveedor;
@@ -8,7 +11,7 @@ import com.seguimiento.model.Proveedor;
 public interface ProveedorService {
     List < Proveedor > findAll();
 
-    void save(Proveedor proveedor);
+    ResponseEntity<Proveedor> save(Proveedor proveedor);
 
     Optional < Proveedor > findById(Long proveedorId);
 

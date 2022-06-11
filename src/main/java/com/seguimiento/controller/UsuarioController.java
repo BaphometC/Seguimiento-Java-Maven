@@ -36,7 +36,7 @@ public class UsuarioController implements usuarioService {
 		return usuarioRepo.findById(usuarioId);
 	}
 
-	@PostMapping("/usuarios/newusuario")
+	@PostMapping("/usuarios/registro")
 	public void save(Usuario usuario) throws NoSuchAlgorithmException {
 		Usuario newusuario = usuario;
 		String pass = SHA512.sha256(usuario.getPassword());

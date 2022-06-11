@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.seguimiento.model.Proveedor;
+import com.seguimiento.model.Suscripcion;
 import com.seguimiento.model.Usuario;
 import com.seguimiento.repository.proveedor.ProveedorRepository;
 import com.seguimiento.repository.proveedor.ProveedorService;
@@ -37,8 +39,9 @@ public class ProveedorController implements ProveedorService{
 	}
 
 	@PostMapping("/proveedores/newproveedor")
-	public void save(Proveedor proveedor) {
+	public ResponseEntity<Proveedor> save(Proveedor proveedor){
 		proveedorRepo.save(proveedor);
+		return new ResponseEntity<Proveedor>(proveedor, HttpStatus.OK);
 	}
 	
 	@PostMapping("/proveedores/delete/{proveedorId}")
